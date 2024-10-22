@@ -12,12 +12,17 @@ const Loading = () => {
             <div className='loading-container'>
                 <div className='loading-item loading-icon'>
                     <div className='loading-icon-box'>
-                        
+
                     </div>
                 </div>
                 <div className='loading-item loading-title'>Loading...</div>
             </div>
         </div>
+        //     <div className="loader">
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        // </div>
     );
 }
 export default Loading;
