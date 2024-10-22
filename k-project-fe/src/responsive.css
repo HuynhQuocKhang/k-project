@@ -1,0 +1,17 @@
+@media screen and (min-width: 0px)  and (max-width: 576px){
+  .login-image{
+      display: none;
+  }
+  .login-container{
+      width: 75vw;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .login-image{
+      display: none;
+  }
+  .login-container{
+      width: 55vw;
+  }
+}

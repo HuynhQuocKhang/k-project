@@ -1,0 +1,51 @@
+.button-box {
+    width: 200px;
+    height: var(--heigh-control);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #665dee;
+    margin-top: 12px;
+    border-radius: 50px;
+}
+
+.button-box:hover {
+    cursor: pointer;
+    background-color: #928bff;
+    color: var(--text-color-black);
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+
+    .button-text,
+    .button-icon {
+        transition-timing-function: ease-in-out;
+        transition-duration: 0.3s;
+        color: var(--text-color-black);
+    }
+}
+
+.button-box:active {
+    cursor: pointer;
+    background-color: #665dee;
+    color: var(--text-color-white);
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.1s;
+
+    .button-text,
+    .button-icon {
+        transition-timing-function: ease-in-out;
+        transition-duration: 0.1s;
+        color: var(--text-color-white);
+    }
+}
+
+.button-icon {
+    margin-right: 8px;
+    color: var(--text-color-white);
+}
+
+.button-text {
+    font-weight: bold;
+    color: var(--text-color-white);
+}

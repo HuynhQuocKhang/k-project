@@ -1,0 +1,39 @@
+.text-field-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid;
+    border-color: var(--text-color-black);
+    width: fit-content;
+}
+
+.text-field-icon {
+    margin-right: 8px;
+}
+
+.text-field-input {
+    border: none;
+    background-color: transparent;
+    color: var(--text-color-black);
+    font-size: 16px;
+    width: 220px;
+    margin-right: 8px;
+    height: var(--heigh-control);
+}
+
+.text-field-input:focus {
+    outline: none;
+
+}
+
+.text-field-input::placeholder {
+    position: absolute;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.text-field-input:focus::placeholder {
+    transform: translateX(10px);
+    font-weight: bold;
+}
