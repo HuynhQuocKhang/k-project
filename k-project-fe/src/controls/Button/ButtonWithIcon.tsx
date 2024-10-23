@@ -5,10 +5,11 @@ import { ReactNode } from 'react';
 type ButtonWithIconProps = {
   icon: any;
   children?: ReactNode;
+  onClick?: () => void;
 }
-const ButtonWithIcon = ({ icon, children }: ButtonWithIconProps) => {
+const ButtonWithIcon = ({ icon, children, onClick }: ButtonWithIconProps) => {
   return (
-    <div className='button-box'>
+    <div className='button-box' onClick={onClick}>
       <FontAwesomeIcon className='button-icon' icon={icon} />
       <span className='button-text'>{children}</span>
     </div>

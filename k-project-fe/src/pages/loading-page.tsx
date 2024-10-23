@@ -3,7 +3,7 @@ import Login from '../Login/Login';
 import Loading from '../controls/Loading/Loading';
 function LoaingPage() {
     return (
-        <Loading />
+        <></>
     );
 }
 

@@ -5,14 +5,21 @@ import { faCheck, faKey, faTruckLoading, faUser } from '@fortawesome/free-solid-
 import { useEffect, useRef, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-const Loading = () => {
-
+type LoadingProps = {
+    isLoading: boolean
+}
+const Loading = ({ isLoading }: LoadingProps) => {
+    useEffect(() => {
+        var component = document.getElementById('loading-component');
+        if (component == null) return;
+        else
+            component.style.display = isLoading ? 'flex' : 'none';
+    }, [isLoading])
     return (
-        <div className="loading-component">
+        <div className="loading-component" id="loading-component">
             <div className='loading-container'>
                 <div className='loading-item loading-icon'>
                     <div className='loading-icon-box'>
-
                     </div>
                 </div>
                 <div className='loading-item loading-title'>Loading...</div>
