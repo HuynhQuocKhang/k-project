@@ -8,6 +8,8 @@
     background-color: #665dee;
     margin-top: 12px;
     border-radius: 50px;
+    border: 3px solid var(--text-color-white);
+    box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .button-box:hover {
@@ -16,7 +18,9 @@
     color: var(--text-color-black);
     transition-timing-function: ease-in-out;
     transition-duration: 0.3s;
-
+    transform: translateY(-1px);
+    border: 3px solid var(--text-color-white);
+    box-shadow: 0px 3px 2px 1px rgba(0, 0, 0, 0.2);
     .button-text,
     .button-icon {
         transition-timing-function: ease-in-out;
@@ -31,7 +35,9 @@
     color: var(--text-color-white);
     transition-timing-function: ease-in-out;
     transition-duration: 0.1s;
-
+    transform: translateY(3px);
+    border: 3px solid var(--text-color-white);
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
     .button-text,
     .button-icon {
         transition-timing-function: ease-in-out;
