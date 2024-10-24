@@ -7,15 +7,18 @@ import { useRef, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import ButtonWithIcon from '../controls/Button/ButtonWithIcon';
 import Loading from '../controls/Loading/Loading';
+import { axiosGET } from '../services/axios-services';
 const Login = () => {
     const [isLoading, setIsLoading] = useState(false);
     let txtUsername = useRef('');
     let txtPassword = useRef('');
-    const handleLogin = () => {
+    const handleLogin = async () => {
         setIsLoading(true);
-        setTimeout(() => {
+        var rs = await axiosGET("weatherforecast");
+        if (rs) {
             setIsLoading(false);
-        }, 3000)
+            console.info(rs);
+        }
     }
     return (
         <>

@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("k-project-be")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9a150f4d1a58caa6cb46a8c3c1a84839cd84e74")]
 [assembly: System.Reflection.AssemblyProductAttribute("k-project-be")]
 [assembly: System.Reflection.AssemblyTitleAttribute("k-project-be")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

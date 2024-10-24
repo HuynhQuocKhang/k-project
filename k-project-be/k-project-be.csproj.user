@@ -2,6 +2,6 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ActiveDebugProfile>Container (Dockerfile)</ActiveDebugProfile>
-    <NameOfLastUsedPublishProfile>C:\Work\k-project\k-project-be\Properties\PublishProfiles\registry.hub.docker.com_huynhkhang.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>E:\Project\k-project\k-project-be\Properties\PublishProfiles\registry.hub.docker.com_huynhkhang.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
