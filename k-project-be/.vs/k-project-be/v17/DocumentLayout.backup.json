@@ -1,14 +1,58 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\Project\\k-project\\k-project-be\\",
+  "WorkspaceRootPath": "C:\\Work\\k-project\\k-project\\k-project-be\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|k-project-be.csproj|e:\\project\\k-project\\k-project-be\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|k-project-be.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|c:\\work\\k-project\\k-project\\k-project-be\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|k-project-be.csproj|e:\\project\\k-project\\k-project-be\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|k-project-be.csproj|solutionrelative:dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|c:\\work\\k-project\\k-project\\k-project-be\\services\\repository\\loginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|solutionrelative:services\\repository\\loginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|c:\\work\\k-project\\k-project\\k-project-be\\services\\irepository\\iloginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|solutionrelative:services\\irepository\\iloginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|c:\\work\\k-project\\k-project\\k-project-be\\dtos\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|solutionrelative:dtos\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|c:\\work\\k-project\\k-project\\k-project-be\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|solutionrelative:controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|c:\\work\\k-project\\k-project\\k-project-be\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|solutionrelative:controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|c:\\work\\k-project\\k-project\\k-project-be\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|c:\\work\\k-project\\k-project\\k-project-be\\controllers\\permissioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|solutionrelative:controllers\\permissioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|c:\\work\\k-project\\k-project\\k-project-be\\extenstions\\servicescollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|solutionrelative:extenstions\\servicescollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|c:\\work\\k-project\\k-project\\k-project-be\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|solutionrelative:controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|c:\\work\\k-project\\k-project\\k-project-be\\services\\repository\\permissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|solutionrelative:services\\repository\\permissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|c:\\work\\k-project\\k-project\\k-project-be\\services\\repository\\rolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|solutionrelative:services\\repository\\rolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|c:\\work\\k-project\\k-project\\k-project-be\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{BCAD3DA3-712E-45BB-BAF0-5DA6621774DE}|LoginProject.csproj|solutionrelative:dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,33 +62,253 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 24,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\Project\\k-project\\k-project-be\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "E:\\Project\\k-project\\k-project-be\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAPAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "LoginRequest.cs",
+              "DocumentMoniker": "C:\\Work\\k-project\\k-project\\k-project-be\\DTOs\\LoginRequest.cs",
+              "RelativeDocumentMoniker": "DTOs\\LoginRequest.cs",
+              "ToolTip": "C:\\Work\\k-project\\k-project\\k-project-be\\DTOs\\LoginRequest.cs",
+              "RelativeToolTip": "DTOs\\LoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-18T09:06:51.078Z",
+              "WhenOpened": "2024-10-25T09:54:31.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Work\\k-project\\k-project\\k-project-be\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Work\\k-project\\k-project\\k-project-be\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-25T09:32:12.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PermissionController.cs",
+              "DocumentMoniker": "C:\\Work\\k-project\\k-project\\k-project-be\\Controllers\\PermissionController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PermissionController.cs",
+              "ToolTip": "C:\\Work\\k-project\\k-project\\k-project-be\\Controllers\\PermissionController.cs",
+              "RelativeToolTip": "Controllers\\PermissionController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-25T07:33:50.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Work\\k-project\\k-project\\k-project-be\\Dockerfile",
+              "RelativeDocumentMoniker": "Dockerfile",
+              "ToolTip": "C:\\Work\\k-project\\k-project\\k-project-be\\Dockerfile",
+              "RelativeToolTip": "Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-10-25T08:13:29.254Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ServicesCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Work\\k-project\\k-project\\k-project-be\\Extenstions\\ServicesCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "Extenstions\\ServicesCollectionExtensions.cs",
+              "ToolTip": "C:\\Work\\k-project\\k-project\\k-project-be\\Extenstions\\ServicesCollectionExtensions.cs",
+              "RelativeToolTip": "Extenstions\\ServicesCollectionExtensions.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAqwBAAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-25T08:05:20.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Work\\k-project\\k-project\\k-project-be\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Work\\k-project\\k-project\\k-project-be\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-25T08:05:16.588Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RoleRepository.cs",
+              "DocumentMoniker": "C:\\Work\\k-project\\k-project\\k-project-be\\Services\\Repository\\RoleRepository.cs",
+              "RelativeDocumentMoniker": "Services\\Repository\\RoleRepository.cs",
+              "ToolTip": "C:\\Work\\k-project\\k-project\\k-project-be\\Services\\Repository\\RoleRepository.cs",
+              "RelativeToolTip": "Services\\Repository\\RoleRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-25T07:51:47.219Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PermissionRepository.cs",
+              "DocumentMoniker": "C:\\Work\\k-project\\k-project\\k-project-be\\Services\\Repository\\PermissionRepository.cs",
+              "RelativeDocumentMoniker": "Services\\Repository\\PermissionRepository.cs",
+              "ToolTip": "C:\\Work\\k-project\\k-project\\k-project-be\\Services\\Repository\\PermissionRepository.cs",
+              "RelativeToolTip": "Services\\Repository\\PermissionRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-25T07:51:31.123Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Dockerfile",
-              "DocumentMoniker": "E:\\Project\\k-project\\k-project-be\\Dockerfile",
-              "RelativeDocumentMoniker": "Dockerfile",
-              "ToolTip": "E:\\Project\\k-project\\k-project-be\\Dockerfile",
-              "RelativeToolTip": "Dockerfile",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-10-18T04:22:39.301Z",
+              "Title": "LoginRepository.cs",
+              "DocumentMoniker": "C:\\Work\\k-project\\k-project\\k-project-be\\Services\\Repository\\LoginRepository.cs",
+              "RelativeDocumentMoniker": "Services\\Repository\\LoginRepository.cs",
+              "ToolTip": "C:\\Work\\k-project\\k-project\\k-project-be\\Services\\Repository\\LoginRepository.cs",
+              "RelativeToolTip": "Services\\Repository\\LoginRepository.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAA8wD4AAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-25T07:51:00.244Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BaseController.cs",
+              "DocumentMoniker": "C:\\Work\\k-project\\k-project\\k-project-be\\Controllers\\BaseController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BaseController.cs",
+              "ToolTip": "C:\\Work\\k-project\\k-project\\k-project-be\\Controllers\\BaseController.cs",
+              "RelativeToolTip": "Controllers\\BaseController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAiwBoAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-25T07:48:24.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ILoginRepository.cs",
+              "DocumentMoniker": "C:\\Work\\k-project\\k-project\\k-project-be\\Services\\IRepository\\ILoginRepository.cs",
+              "RelativeDocumentMoniker": "Services\\IRepository\\ILoginRepository.cs",
+              "ToolTip": "C:\\Work\\k-project\\k-project\\k-project-be\\Services\\IRepository\\ILoginRepository.cs",
+              "RelativeToolTip": "Services\\IRepository\\ILoginRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-25T07:47:56.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RoleController.cs",
+              "DocumentMoniker": "C:\\Work\\k-project\\k-project\\k-project-be\\Controllers\\RoleController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RoleController.cs",
+              "ToolTip": "C:\\Work\\k-project\\k-project\\k-project-be\\Controllers\\RoleController.cs",
+              "RelativeToolTip": "Controllers\\RoleController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-25T07:29:14.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Work\\k-project\\k-project\\k-project-be\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Work\\k-project\\k-project\\k-project-be\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAAC0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-25T02:54:47.444Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 1524,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
             }
           ]
         }

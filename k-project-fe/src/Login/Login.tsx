@@ -7,17 +7,34 @@ import { useRef, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import ButtonWithIcon from '../controls/Button/ButtonWithIcon';
 import Loading from '../controls/Loading/Loading';
-import { axiosGET } from '../services/axios-services';
+import { axiosGET, axiosPOST } from '../services/axios-services';
+import Cookies from 'js-cookie';
 const Login = () => {
     const [isLoading, setIsLoading] = useState(false);
-    let txtUsername = useRef('');
-    let txtPassword = useRef('');
+    let [txtUsername, setTxtUsername] = useState('');
+    let [txtPassword, setTxtPassword] = useState('');
     const handleLogin = async () => {
-        setIsLoading(true);
-        var rs = await axiosGET("weatherforecast");
-        if (rs) {
+        // console.log(txtUsername, txtPassword);
+        try {
+            setIsLoading(true);
+            //var rs = await axiosGET("weatherforecast");
+            var loginRequest = {
+                username: txtUsername,
+                password: txtPassword
+            };
+            var rs = await axiosPOST("Auth/Login", loginRequest);
+            if (rs.success) {
+                const token = rs.data;
+                Cookies.set('jwtToken', token, { expires: 1, secure: true }); // 'expires: 1' là 1 ngày, 'secure' cho HTTPS
+                console.info(rs);
+                //window.location.href = "/success";
+            }
+        } catch (error) {
+            console.error(error);
+            //window.location.href = "/not-found";
+        }
+        finally {
             setIsLoading(false);
-            console.info(rs);
         }
     }
     return (
@@ -28,10 +45,10 @@ const Login = () => {
                         <div className='col-12 col-sm-12 col-md-6 login-content'>
                             <div className="login-title">Login</div>
                             <div className='align-center'>
-                                <TextFieldWithIcon value={txtUsername.current} icon={faUser} placeholder='Username' />
+                                <TextFieldWithIcon value={txtUsername} icon={faUser} placeholder='Username' onChange={(e: any) => setTxtUsername(e)} />
                             </div>
                             <div className='align-center'>
-                                <TextFieldWithIcon value={txtPassword.current} icon={faKey} placeholder='Password' />
+                                <TextFieldWithIcon value={txtPassword} icon={faKey} placeholder='Password' onChange={(e: any) => setTxtPassword(e)}/>
                             </div>
                             <div className='align-center'>
                                 <ButtonWithIcon onClick={handleLogin} icon={faCheck}>Login</ButtonWithIcon>

@@ -1,4 +1,4 @@
-namespace k_project_be
+namespace LoginProject.Models
 {
     public class WeatherForecast
     {

@@ -11,7 +11,10 @@ const Navigate = () => {
             <Link to="/login">Login</Link>
           </li>
           <li>
-            <Link to="/loading">Loading</Link>
+            <Link to="/not-found">Not found</Link>
+          </li>
+          <li>
+            <Link to="/success">Success</Link>
           </li>
         </ul>
       </nav>

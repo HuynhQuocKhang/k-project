@@ -1,6 +1,7 @@
+using LoginProject.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace k_project_be.Controllers
+namespace LoginProject.Controllers
 {
     [ApiController]
     [Route("[controller]")]
