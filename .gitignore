@@ -2,3 +2,8 @@
 */bin
 */obj
 */node_modules
+
+.vs/*
+bin/*
+obj/*
+node_modules/*
