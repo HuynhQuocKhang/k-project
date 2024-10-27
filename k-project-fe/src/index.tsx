@@ -4,6 +4,7 @@ import './index.css';
 import './responsive.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { FlashPopupProvider } from './context/FlashPopupContext';
 
 
 const root = ReactDOM.createRoot(
@@ -11,7 +12,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <FlashPopupProvider>
+      <App />
+    </FlashPopupProvider>
   </React.StrictMode>
 );
 

@@ -19,5 +19,17 @@ code {
 :root {
   --text-color-black: #383838;
   --heigh-control: 42px;
-  --text-color-white: #fcffee;
+  --white-color: #fdfff6;
+  --success-color: #56d487;
+  --error-color: #d46161;
+  --info-color: #638cd8;
+  --warning-color: #dbb561;
 }
+
+/* .background-popup {
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  padding-left: 35px;
+  padding-top: 34px
+} */

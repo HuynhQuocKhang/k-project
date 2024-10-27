@@ -8,30 +8,59 @@ import { Button } from 'react-bootstrap';
 import ButtonWithIcon from '../controls/Button/ButtonWithIcon';
 import Loading from '../controls/Loading/Loading';
 import { axiosGET, axiosPOST } from '../services/axios-services';
-import Cookies from 'js-cookie';
+import Cookies from 'universal-cookie';
+import { jwtDecode } from 'jwt-decode';
+import { useFlashPopup } from '../context/FlashPopupContext';
 const Login = () => {
     const [isLoading, setIsLoading] = useState(false);
     let [txtUsername, setTxtUsername] = useState('');
     let [txtPassword, setTxtPassword] = useState('');
+    const { showFlashPopup } = useFlashPopup();
+    const cookies = new Cookies();
+    window.addEventListener("keyup", (event) => {
+        if (event.key === "Enter") {
+            handleLogin();
+        }
+    })
+
+    const ValidateLogin = () => {
+        if (txtUsername == "" || txtUsername == null) {
+            showFlashPopup("warning", "Please fill user name");
+            return false;
+        }
+        if (txtPassword == "" || txtPassword == null) {
+            showFlashPopup("warning", "Please fill password");
+            return false;
+        }
+        return true;
+    }
     const handleLogin = async () => {
-        // console.log(txtUsername, txtPassword);
         try {
+            if (!ValidateLogin()) return;
             setIsLoading(true);
-            //var rs = await axiosGET("weatherforecast");
-            var loginRequest = {
-                username: txtUsername,
-                password: txtPassword
-            };
-            var rs = await axiosPOST("Auth/Login", loginRequest);
-            if (rs.success) {
-                const token = rs.data;
-                Cookies.set('jwtToken', token, { expires: 1, secure: true }); // 'expires: 1' là 1 ngày, 'secure' cho HTTPS
-                console.info(rs);
-                //window.location.href = "/success";
-            }
+            // var loginRequest = {
+            //     username: txtUsername,
+            //     password: txtPassword
+            // };
+            // var rs = await axiosPOST("Auth/Login", loginRequest);
+            // if (rs.success) {
+            //     const token = rs.data;
+            //     var jwtObj = jwtDecode(token);
+            //     if (jwtObj != null && jwtObj?.exp != undefined) {
+            //         var now = new Date(jwtObj.exp * 1000);
+            //         var time = now.getTime();
+            //         var expireTime = time + 1000 * 36000;
+            //         now.setTime(expireTime);
+            //         cookies.set("jwt_authentication", token, {
+            //             expires: now
+            //         })
+            //     }
+                showFlashPopup("success", "Đăng nhập thành công")
+                window.location.href = "/success";
+            // }
         } catch (error) {
             console.error(error);
-            //window.location.href = "/not-found";
+            window.location.href = "/not-found";
         }
         finally {
             setIsLoading(false);
@@ -48,10 +77,10 @@ const Login = () => {
                                 <TextFieldWithIcon value={txtUsername} icon={faUser} placeholder='Username' onChange={(e: any) => setTxtUsername(e)} />
                             </div>
                             <div className='align-center'>
-                                <TextFieldWithIcon value={txtPassword} icon={faKey} placeholder='Password' onChange={(e: any) => setTxtPassword(e)}/>
+                                <TextFieldWithIcon type="password" value={txtPassword} icon={faKey} placeholder='Password' onChange={(e: any) => setTxtPassword(e)} />
                             </div>
                             <div className='align-center'>
-                                <ButtonWithIcon onClick={handleLogin} icon={faCheck}>Login</ButtonWithIcon>
+                                <ButtonWithIcon onClick={() => handleLogin()} icon={faCheck}>Login</ButtonWithIcon>
                             </div>
                         </div>
                         <div className='col-12 col-sm-12 col-md-6 login-image'>

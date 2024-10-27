@@ -6,9 +6,10 @@ type TextFieldWithIconProps = {
   icon: any;
   placeholder: string;
   value: string;
+  type?: string;
   onChange: (e: any) => void;
 }
-const TextFieldWithIcon = ({ icon, placeholder, value, onChange }: TextFieldWithIconProps) => {
+const TextFieldWithIcon = ({ icon, placeholder, value, type = "text", onChange }: TextFieldWithIconProps) => {
 
   const handleChange = (e: any) => {
     onChange(e.target.value);
@@ -17,7 +18,7 @@ const TextFieldWithIcon = ({ icon, placeholder, value, onChange }: TextFieldWith
   return (
     <div className='text-field-box'>
       <FontAwesomeIcon className='text-field-icon' icon={icon} />
-      <input className='text-field-input' type="text" placeholder={placeholder} value={value} onChange={(e: any) => handleChange(e)} />
+      <input className='text-field-input' type={type} placeholder={placeholder} value={value} onChange={(e: any) => handleChange(e)} />
     </div>
   );
 }

@@ -1,0 +1,133 @@
+.flash-popup-component {
+    background-color: transparent;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    box-shadow: 3px -5px 24px 5px rgba(0, 0, 0, 0.5);
+    animation: openPopup 0.2s linear;
+}
+
+@keyframes openPopup {
+    0% {
+        transform: translateY(8px);
+        opacity: 0;
+        transition-timing-function: ease-in;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+        transition-timing-function: ease-in;
+    }
+}
+
+@keyframes closePopup {
+    0% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(8px);
+        opacity: 0;
+    }
+}
+
+.bottom-right {
+    bottom: 8px;
+    right: 28px;
+}
+
+.bottom-left {
+    bottom: 8px;
+    left: 8px;
+}
+
+.top-right {
+    top: 20px;
+    right: 28px;
+}
+
+.top-left {
+    top: 20px;
+    left: 8px;
+}
+
+.flash-popup-background,
+.flash-popup-content {
+    height: 50px;
+    width: 367px;
+    //box-shadow: 0px 10px 12px 0px rgba(0, 0, 0, 0.2);
+
+}
+
+.flash-popup-background {
+    background-color: var(--success-color);
+}
+
+.flash-popup-content {
+    background-color: var(--white-color);
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 9999;
+    padding: 0px 16px;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.flash-popup-title {
+    background-color: transparent;
+    position: absolute;
+    top: -38px;
+    left: 16px;
+    z-index: 9999;
+    color: var(--success-color);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.flash-popup-text {
+    color: var(--success-color);
+    font-weight: bold;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    font-weight: 500;
+    font-size: 14px;
+    flex-wrap: nowrap;
+    position: absolute;
+}
+
+.flash-popup-icon {
+    color: var(--success-color);
+    margin-right: 12px;
+    border: 2px solid var(--success-color);
+    border-radius: 120px;
+    padding: 4px;
+    width: 16px;
+    height: 16px;
+}
+
+.corner-icon {
+    position: absolute;
+    z-index: 9999;
+    top: -20px;
+    right: -18px;
+
+    .flash-popup-icon {
+        color: var(--white-color);
+        background-color: var(--success-color);
+        width: 15px;
+        height: 15px;
+        margin: 0px;
+    }
+}
+
+.flash-popup-message {
+    height: 100%;
+}

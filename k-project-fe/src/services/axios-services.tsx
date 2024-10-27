@@ -1,8 +1,9 @@
 import axios from 'axios';
 
+var baseURL = process.env.REACT_APP_IS_DEVELOPMENT ? 'https://localhost:32769/api/' : 'http://site.hqkhang.io.vn/api/'
 // Create an Axios instance with a base URL
 const axiosInstance = axios.create({
-    baseURL: 'http://site.hqkhang.io.vn/api/', // Set your base URL here
+    baseURL: baseURL, // Set your base URL here
     headers: {
         'Content-Type': 'application/json', // Default content type for requests
         'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
