@@ -48,8 +48,11 @@ namespace LoginProject.Services.IRepository
             var isValidUser = await IsValidUser(userInfo);
             if (isValidUser)
             {
+                var roles = new List<string> { "Admin", "IT" };
+                var permissions = new List<string> { "ALL", "IT_ALL" };
+
+                var token = GenerateJwtToken(userInfo, roles, permissions);
                 // Nếu thông tin đăng nhập hợp lệ, tạo JWT token
-                var token = GenerateJwtToken(userInfo);
                 return token;
             }
             else
@@ -60,16 +63,29 @@ namespace LoginProject.Services.IRepository
 
 
 
-        private string GenerateJwtToken(LoginRequest user)
+        private string GenerateJwtToken(LoginRequest user, List<string> roles, List<string> permissions)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:Key"] ?? "HcPGtz6nvzxEKmITWuHVKfpTZL1+Tii18z+E+FhxfFg="));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            var claims = new[]
+            // Define claims with multiple roles and permissions
+            var claims = new List<Claim>
+    {
+        new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+    };
+
+            // Add each role as a separate claim
+            foreach (var role in roles)
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-            };
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
+
+            // Add each permission as a separate claim
+            foreach (var permission in permissions)
+            {
+                claims.Add(new Claim("permission", permission));
+            }
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["JwtSettings:Issuer"],
@@ -81,6 +97,7 @@ namespace LoginProject.Services.IRepository
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
 
         private async Task<bool> IsValidUser(LoginRequest loginModel)
         {
