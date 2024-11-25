@@ -6,24 +6,26 @@ import { jwtDecode } from 'jwt-decode';
 import App from '../App';
 import SuccessPage from './error-pages/success-page';
 import { Navigate } from 'react-router-dom';
-function LoginPage() {
+import ManageAccount from './ManageAccount/ManageAccount';
+import { CustomJwtPayload } from '../utils/cookies-function';
+function ManageAccountPage() {
     const { authToken } = useAuth();
     const checkJwt = (token: any) => {
         if (!token) {
-            return false;  // Token doesn't exist
+            return false;
         }
 
         try {
-            const decoded = jwtDecode(token);
-            // Optional: Check if the token has expired
+            const decoded = jwtDecode<CustomJwtPayload>(token);
+            console.log("decoded", decoded)
             const currentTime = Date.now(); // Current time in seconds
             if (decoded?.exp != undefined && decoded.exp * 1000 < currentTime) {
-                return false;  // Token has expired
+                return false;
             }
 
-            return true;  // Return decoded token if it's valid
+            return true;
         } catch (error) {
-            return false;  // Return false if the token is invalid
+            return false;
         }
     };
 
@@ -32,8 +34,8 @@ function LoginPage() {
         return <Navigate to="/login" />
     }
     return (
-        <Navigate to="/success" />
+        <ManageAccount />
     );
 }
 
-export default LoginPage;
+export default ManageAccountPage;

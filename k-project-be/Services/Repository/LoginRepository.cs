@@ -78,20 +78,20 @@ namespace LoginProject.Services.IRepository
             // Add each role as a separate claim
             foreach (var role in roles)
             {
-                claims.Add(new Claim(ClaimTypes.Role, role));
+                claims.Add(new Claim("roles", role));
             }
 
             // Add each permission as a separate claim
             foreach (var permission in permissions)
             {
-                claims.Add(new Claim("permission", permission));
+                claims.Add(new Claim("permissions", permission));
             }
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["JwtSettings:Issuer"],
                 audience: _configuration["JwtSettings:Audience"],
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(Convert.ToDouble(_configuration["JwtSettings:ExpiresInMinutes"])),
+                expires: DateTime.Now.AddDays(Convert.ToDouble(_configuration["JwtSettings:ExpiresInDays"])),
                 signingCredentials: credentials
             );
 

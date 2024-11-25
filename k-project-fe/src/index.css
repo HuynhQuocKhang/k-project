@@ -33,3 +33,24 @@ code {
   padding-left: 35px;
   padding-top: 34px
 } */
+
+
+.toast-success {
+  background-color: #11B714 !important;
+  color: #fff !important;
+}
+
+.toast-error {
+  background-color: #E84636 !important;
+  color: #fff !important;
+}
+
+.toast-warning {
+  background-color: #ffb70e !important;
+  color: #fff !important;
+}
+
+.toast-info {
+  background-color: #ffb70e !important;
+  color: #fff !important;
+}

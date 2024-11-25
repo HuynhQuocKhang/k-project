@@ -1,22 +1,18 @@
 import './Login.scss';
-import LoginImage from '../assets/images/signup-image.jpg';
-import { TextField } from '@mui/material';
-import TextFieldWithIcon from '../controls/TextField/TextFieldWithIcon';
+import LoginImage from '../../assets/images/signup-image.jpg';
+import TextFieldWithIcon from '../../controls/TextField/TextFieldWithIcon';
 import { faCheck, faKey, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useRef, useState } from 'react';
-import { Button } from 'react-bootstrap';
-import ButtonWithIcon from '../controls/Button/ButtonWithIcon';
-import Loading from '../controls/Loading/Loading';
-import { axiosGET, axiosPOST } from '../services/axios-services';
-import Cookies from 'universal-cookie';
-import { jwtDecode } from 'jwt-decode';
-import { useFlashPopup } from '../context/FlashPopupContext';
+import ButtonWithIcon from '../../controls/Button/ButtonWithIcon';
+import Loading from '../../controls/Loading/Loading';
+import { axiosGET, axiosPOST } from '../../services/axios-services';
+import Cookies from 'js-cookie';
+import { showToast } from '../../utils/toast-function';
+import { saveToken } from '../../utils/cookies-function';
 const Login = () => {
     const [isLoading, setIsLoading] = useState(false);
     let [txtUsername, setTxtUsername] = useState('');
     let [txtPassword, setTxtPassword] = useState('');
-    const { showFlashPopup } = useFlashPopup();
-    const cookies = new Cookies();
     window.addEventListener("keyup", (event) => {
         if (event.key === "Enter") {
             handleLogin();
@@ -25,11 +21,11 @@ const Login = () => {
 
     const ValidateLogin = () => {
         if (txtUsername == "" || txtUsername == null) {
-            showFlashPopup("warning", "Please fill user name");
+            showToast("warning", "Please fill user name");
             return false;
         }
         if (txtPassword == "" || txtPassword == null) {
-            showFlashPopup("warning", "Please fill password");
+            showToast("warning", "Please fill password");
             return false;
         }
         return true;
@@ -43,11 +39,11 @@ const Login = () => {
                 password: txtPassword
             };
             var rs = await axiosPOST("Auth/Login", loginRequest);
-            if (rs.success) {
+            if (rs?.success) {
                 const token = rs.data;
-                Cookies.set('jwtToken', token, { expires: 1, secure: true }); // 'expires: 1' là 1 ngày, 'secure' cho HTTPS
-                console.info(rs);
-                //window.location.href = "/success";
+                saveToken(token);
+                showToast("success", "Login success");
+                window.location.href = "/success";
             }
         } catch (error) {
             console.error(error);

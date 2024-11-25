@@ -4,17 +4,25 @@ import './index.css';
 import './responsive.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { FlashPopupProvider } from './context/FlashPopupContext';
-
+import 'react-toastify/dist/ReactToastify.css';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import { jwtDecode } from 'jwt-decode';
+import Login from './pages/Login/Login';
+import { ToastContainer } from 'react-toastify';
+import { showToast } from './utils/toast-function';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <FlashPopupProvider>
+    <AuthProvider>
       <App />
-    </FlashPopupProvider>
+      <ToastContainer
+      newestOnTop={true}
+      autoClose={5000}
+      closeOnClick={true} />
+    </AuthProvider>
   </React.StrictMode>
 );
 

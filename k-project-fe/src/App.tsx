@@ -1,38 +1,57 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import LoginPage from './pages/login-page';
-import Navigate from './controls/Navigate/Navigate';
 import SuccessPage from './pages/error-pages/success-page';
 import NotFoundPage from './pages/error-pages/not-found-page';
-import Cookies from 'js-cookie';
+import { useAuth } from './context/AuthContext';
+import { showToast } from './utils/toast-function';
 import { jwtDecode } from 'jwt-decode';
-import { CustomJwtPayload } from './utils/cookies-function';
-import PrivateRoute from './PrivateRoute';
-function App() {
-  const getPermissions = (requiredPermissions: string[]) => {
-    const token = Cookies.get('authToken');
-    let hasAccess = false;
-    if (token) {
-      const decodedToken = jwtDecode<CustomJwtPayload>(token);
-      const userPermissions = decodedToken.permissions || [];
+import Login from './pages/Login/Login';
+import NavigateBar from './controls/Navigate/NavigateBar';
+import LoginPage from './pages/login-page';
+import ManageAccountPage from './pages/manage-account-page';
 
-      hasAccess = requiredPermissions.length == 0 ? true : requiredPermissions.every((permission: any) =>
-        userPermissions.includes(permission)
-      );
+function App() {
+  const { authToken } = useAuth();
+  const checkJwt = (token: any) => {
+    if (!token) {
+      showToast("warning", "Please login");
+      return false;  // Token doesn't exist
     }
-    return hasAccess;
+
+    try {
+      const decoded = jwtDecode(token);
+      // Optional: Check if the token has expired
+      const currentTime = Date.now(); // Current time in seconds
+      if (decoded?.exp != undefined && decoded.exp * 1000 < currentTime) {
+        showToast("warning", "Login session has expired");
+        return false;  // Token has expired
+      }
+
+      return true;  // Return decoded token if it's valid
+    } catch (error) {
+      console.error("Invalid token", error);
+      return false;  // Return false if the token is invalid
+    }
+  };
+
+  const isAuthenticated = checkJwt(authToken);
+  if (!isAuthenticated) {
+    return <Login />
   }
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Navigate />}>
-          {getPermissions(['Admin', 'IT', 'Guest'])} && <PrivateRoute path="login" element={<LoginPage />} hasAccess={getPermissions(['Admin', 'IT', 'Guest'])} />
-          {getPermissions(['Admin', 'IT', 'Guest'])} && <PrivateRoute path="success" element={<SuccessPage />} hasAccess={getPermissions(['Admin', 'IT', 'Guest'])} />
-          {getPermissions(['Admin', 'IT', 'Guest'])} && <PrivateRoute path="not-found" element={<NotFoundPage />} hasAccess={getPermissions(['Admin', 'IT', 'Guest'])} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<NavigateBar />}>
+            <Route path="login" element={<LoginPage />} />
+            <Route path="success" element={<SuccessPage />} />
+            <Route path="not-found" element={<NotFoundPage />} />
+            <Route path="manage-account" element={<ManageAccountPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter >
+    </>
   );
 }
 

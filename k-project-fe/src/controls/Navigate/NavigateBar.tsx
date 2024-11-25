@@ -1,5 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-const Navigate = () => {
+const NavigateBar = () => {
   return (
     <>
       <nav>
@@ -9,6 +9,9 @@ const Navigate = () => {
           </li>
           <li>
             <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/manage-account">ManageAccount</Link>
           </li>
           <li>
             <Link to="/not-found">Not found</Link>
@@ -24,4 +27,4 @@ const Navigate = () => {
   )
 };
 
-export default Navigate;
+export default NavigateBar;

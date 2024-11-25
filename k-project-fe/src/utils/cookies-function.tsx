@@ -7,11 +7,17 @@ export interface CustomJwtPayload extends JwtPayload {
 }
 
 export const saveToken = (token: any) => {
-  Cookies.set('authToken', token, { expires: 7 });
+  const decodedToken = jwtDecode<CustomJwtPayload>(token);
+  
+  if (decodedToken) {
+    Cookies.set('jwtToken', token, { expires: decodedToken.exp ? new Date(decodedToken.exp * 1000) : 1 });
+  }
+  else {
+    Cookies.set('jwtToken', token, { expires: 1 });
+  }
 };
 
-export const getPermissions = () => {
-  const token = Cookies.get('authToken');
+export const getPermissions = (token: any) => {
   if (token) {
     const decodedToken = jwtDecode<CustomJwtPayload>(token);
     return decodedToken.permissions; // Assuming your token contains a 'permissions' field
@@ -19,8 +25,7 @@ export const getPermissions = () => {
   return null;
 };
 
-export const getRoles = () => {
-  const token = Cookies.get('authToken');
+export const getRoles = (token: any) => {
   if (token) {
     const decodedToken = jwtDecode<CustomJwtPayload>(token);
     return decodedToken.roles; // Assuming your token contains a 'permissions' field
