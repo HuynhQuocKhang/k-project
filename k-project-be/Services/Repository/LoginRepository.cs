@@ -42,14 +42,14 @@ namespace LoginProject.Services.IRepository
             throw new NotImplementedException();
         }
 
-        public async Task<string> Login (LoginRequest userInfo)
+        public async Task<string> Login(LoginRequest userInfo)
         {
             // Giả sử bạn đã tạo một phương thức xác thực người dùng
             var isValidUser = await IsValidUser(userInfo);
             if (isValidUser)
             {
                 // Nếu thông tin đăng nhập hợp lệ, tạo JWT token
-                var token =  GenerateJwtToken(userInfo);
+                var token = GenerateJwtToken(userInfo);
                 return token;
             }
             else
@@ -58,7 +58,7 @@ namespace LoginProject.Services.IRepository
             }
         }
 
-       
+
 
         private string GenerateJwtToken(LoginRequest user)
         {
@@ -67,9 +67,9 @@ namespace LoginProject.Services.IRepository
 
             var claims = new[]
             {
-            new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-        };
+                new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            };
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["JwtSettings:Issuer"],
@@ -87,6 +87,6 @@ namespace LoginProject.Services.IRepository
             return loginModel.UserName == "admin" && loginModel.Password == "password";
         }
 
-        
+
     }
 }

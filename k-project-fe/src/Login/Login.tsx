@@ -38,26 +38,17 @@ const Login = () => {
         try {
             if (!ValidateLogin()) return;
             setIsLoading(true);
-            // var loginRequest = {
-            //     username: txtUsername,
-            //     password: txtPassword
-            // };
-            // var rs = await axiosPOST("Auth/Login", loginRequest);
-            // if (rs.success) {
-            //     const token = rs.data;
-            //     var jwtObj = jwtDecode(token);
-            //     if (jwtObj != null && jwtObj?.exp != undefined) {
-            //         var now = new Date(jwtObj.exp * 1000);
-            //         var time = now.getTime();
-            //         var expireTime = time + 1000 * 36000;
-            //         now.setTime(expireTime);
-            //         cookies.set("jwt_authentication", token, {
-            //             expires: now
-            //         })
-            //     }
-                showFlashPopup("success", "Đăng nhập thành công")
-                window.location.href = "/success";
-            // }
+            var loginRequest = {
+                username: txtUsername,
+                password: txtPassword
+            };
+            var rs = await axiosPOST("Auth/Login", loginRequest);
+            if (rs.success) {
+                const token = rs.data;
+                Cookies.set('jwtToken', token, { expires: 1, secure: true }); // 'expires: 1' là 1 ngày, 'secure' cho HTTPS
+                console.info(rs);
+                //window.location.href = "/success";
+            }
         } catch (error) {
             console.error(error);
             window.location.href = "/not-found";
