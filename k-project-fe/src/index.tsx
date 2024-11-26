@@ -6,22 +6,22 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import { jwtDecode } from 'jwt-decode';
-import Login from './pages/Login/Login';
 import { ToastContainer } from 'react-toastify';
-import { showToast } from './utils/toast-function';
-
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+import { PrimeReactProvider } from 'primereact/api';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <App />
-      <ToastContainer
-      newestOnTop={true}
-      autoClose={5000}
-      closeOnClick={true} />
+      <PrimeReactProvider>
+        <App />
+        <ToastContainer
+          newestOnTop={true}
+          autoClose={5000}
+          closeOnClick={true} />
+      </PrimeReactProvider>
     </AuthProvider>
   </React.StrictMode>
 );
