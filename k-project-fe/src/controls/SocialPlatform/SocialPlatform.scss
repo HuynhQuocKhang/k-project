@@ -1,0 +1,25 @@
+.social-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 8px;
+    height: 50px;
+    width: 50px;
+    border: 2px solid var(--text-color-grey);
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.social-item:hover {
+    border: 2px solid var(--text-color-black);
+}
+
+.social-icon {
+    font-size: 22px;
+}

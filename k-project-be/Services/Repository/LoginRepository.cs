@@ -1,5 +1,9 @@
-﻿using LoginProject.DTOs;
+﻿using AutoMapper;
+using LoginProject.DTOs;
+using LoginProject.DTOs.Request;
+using LoginProject.Migrations;
 using LoginProject.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq.Expressions;
@@ -11,35 +15,118 @@ namespace LoginProject.Services.IRepository
     public class LoginRepository : ILoginRepository
     {
         private readonly IConfiguration _configuration;
+        private readonly ApplicationDBContext _dbContext;
+        private readonly IMapper _mapper;
 
-        public LoginRepository(IConfiguration configuration)
+        public LoginRepository(IConfiguration configuration, ApplicationDBContext dbContext, IMapper mapper)
         {
             _configuration = configuration;
+            _dbContext = dbContext;
+            _mapper = mapper;
         }
 
-        public Task<string> Delete(object id)
+        public string Delete(object id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (id.GetType() != typeof(Guid))
+                    return "ID is unvalid";
+
+                var entity = _dbContext.UserInfos.Where(x => x.Id == (Guid)id).AsNoTracking().FirstOrDefault();
+                if (entity == null)
+                    return "Entity is not existing in database";
+                else
+                {
+                    _dbContext.UserInfos.Remove(entity);
+                    _dbContext.SaveChanges();
+                    return "Deleted";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public Task<List<UserInfo>> GetAll(Expression<Func<UserInfo, bool>> filter = null, Func<IQueryable<UserInfo>, IOrderedQueryable<UserInfo>> orderBy = null, string includeProperties = "", int PageIndex = 0, int PageSize = 0)
+        public async Task<List<UserInfo>> GetAll(Expression<Func<UserInfo, bool>>? filter = null, Func<IQueryable<UserInfo>, IOrderedQueryable<UserInfo>>? orderBy = null, string includeProperties = "", int PageIndex = 0, int PageSize = 0)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (filter != null)
+                {
+                    var rs = await _dbContext.UserInfos.Where(filter).ToListAsync();
+                    return rs ?? new List<UserInfo>();
+                }
+                else
+                {
+                    var rs = await _dbContext.UserInfos.ToListAsync() ?? new List<UserInfo>();
+                    return rs;
+                }    
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public Task<UserInfo> GetById(object id)
+        public async Task<UserInfo> GetById(object id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (id.GetType() != typeof(Guid))
+                    throw new Exception("ID is unvalid");
+
+                var entity = await _dbContext.UserInfos.Where(x => x.Id == (Guid)id).AsNoTracking().FirstOrDefaultAsync();
+                if (entity == null)
+                    throw new Exception("Entity is not existing in database");
+                else
+                {
+                    return entity;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public Task<UserInfo> Insert(UserInfo entity)
+        public async Task<UserInfo> Insert(UserInfo entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                entity.Id = Guid.NewGuid();
+                var rs = await _dbContext.UserInfos.AddAsync(entity);
+                _dbContext.SaveChanges();
+                return rs.Entity;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
-
-        public Task<UserInfo> Update(UserInfo entityToUpdate)
+        public async Task<UserInfo> Update(UserInfo entityToUpdate)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var entity = await _dbContext.UserInfos.Where(x => x.Id == entityToUpdate.Id).AsNoTracking().FirstOrDefaultAsync();
+                if (entity == null)
+                {
+                    var rs = await _dbContext.UserInfos.AddAsync(entityToUpdate);
+                    _dbContext.SaveChanges();
+                    return rs.Entity as UserInfo;
+                }
+                else
+                {
+                    entity = _mapper.Map<UserInfo>(entityToUpdate);
+                    _dbContext.SaveChanges();
+                    return entity;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public async Task<string> Login(LoginRequest userInfo)

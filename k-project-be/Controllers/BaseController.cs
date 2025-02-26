@@ -24,80 +24,80 @@ namespace LoginProject.Controllers
         //[ApiExplorerSettings(IgnoreApi = true)]
         [Route("[action]")]
         [HttpGet]
-        public virtual IActionResult GetAll()
+        public virtual async Task<ResultApi> GetAll()
         {
             try
             {
-                var result = new { Data = _service.GetAll() };
-                return Ok(new ResultApi(result));
+                var result = await _service.GetAll();
+                return new ResultApi(result);
             }
             catch (Exception ex)
             {
-                return BadRequest(new ResultApi(ex));
+                return new ResultApi(ex.Message);
             }
         }
 
         [Route("[action]")]
         [HttpGet]
-        public virtual IActionResult GetById(TKey id)
+        public virtual async Task<ResultApi> GetById(TKey id)
         {
             try
             {
                 object data = new();
                 if (id != null)
-                    data = _service.GetById(id);
-                var result = new { Data = data };
-                return Ok(new ResultApi(result));
+                    data = await _service.GetById(id);
+                return new ResultApi(data);
             }
             catch (Exception ex)
             {
-                return BadRequest(new ResultApi(ex));
+                return new ResultApi(ex.Message);
             }
         }
 
 
         [Route("[action]")]
         [HttpPost]
-        public virtual IActionResult Create(TEntity entity)
+        public virtual async Task<ResultApi> Create(TEntity entity)
         {
             try
             {
-                _service.Insert(entity);
-                return Ok(new ResultApi(entity));
+                var rs = await _service.Insert(entity);
+                return new ResultApi(rs);
             }
             catch (Exception ex)
             {
-                return BadRequest(new ResultApi(ex));
+                return new ResultApi(ex.Message);
             }
         }
 
         [Route("[action]")]
         [HttpPost]
-        public virtual IActionResult Update(TEntity entity)
+        public virtual async Task<ResultApi> Update(TEntity entity)
         {
             try
             {
-                _service.Update(entity);
-                return Ok(new ResultApi(entity));
+                var rs = await _service.Update(entity);
+                return new ResultApi(rs);
             }
             catch (Exception ex)
             {
-                return BadRequest(new ResultApi(ex));
+                return new ResultApi(ex.Message);
             }
         }
         [Route("[action]")]
         [HttpGet]
-        public virtual IActionResult Delete(TKey? id)
+        public virtual async Task<ResultApi> Delete(TKey id)
         {
             try
             {
                 if (id != null)
-                    _service.Delete(id);
-                return Ok(new ResultApi(id));
+                    return new ResultApi(_service.Delete(id));
+                else
+                    return new ResultApi("ID is null");
             }
             catch (Exception ex)
             {
-                return BadRequest(new ResultApi(ex));
+                return new ResultApi(ex.Message);
             }
         }
     }

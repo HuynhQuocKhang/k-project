@@ -4,10 +4,10 @@
     {
         public bool Success { get; set; } = true;
         public string Error { get; set; } = "";
-        public object? Data { get; set; } = null;
+        public dynamic? Data { get; set; } = null;
         public ResultApi() { }
 
-        public ResultApi(object data)
+        public ResultApi(dynamic data)
         {
             Success = true;
             Data = data;

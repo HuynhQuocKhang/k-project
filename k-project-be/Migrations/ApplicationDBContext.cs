@@ -30,6 +30,8 @@ namespace LoginProject.Migrations
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             new UserInfoConfiguration().Configure(modelBuilder.Entity<UserInfo>());
+            new RoleConfiguration().Configure(modelBuilder.Entity<Role>());
+            new PermissionConfiguration().Configure(modelBuilder.Entity<Permission>());
         }
     }
 }

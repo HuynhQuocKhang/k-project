@@ -1,4 +1,5 @@
 ﻿using LoginProject.DTOs;
+using LoginProject.DTOs.Request;
 using LoginProject.Models;
 
 namespace LoginProject.Services.IRepository

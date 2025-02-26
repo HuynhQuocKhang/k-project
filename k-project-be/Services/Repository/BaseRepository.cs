@@ -23,8 +23,8 @@ namespace LoginProject.Services.IRepository
         }
 
         public async Task<List<TEntity>> GetAll(
-            Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Expression<Func<TEntity, bool>>? filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
             string includeProperties = "",
             int pageIndex = 0,
             int pageSize = 0)
@@ -48,7 +48,7 @@ namespace LoginProject.Services.IRepository
                     query = orderBy(query);
                 }
 
-                return query.Skip(pageIndex * pageSize).Take(pageSize).ToList();
+                return await query.Skip(pageIndex * pageSize).Take(pageSize).ToListAsync();
             }
             catch (Exception ex)
             {
@@ -61,7 +61,7 @@ namespace LoginProject.Services.IRepository
         {
             try
             {
-                return _context.Set<TEntity>().Find(id);
+                return await _context.Set<TEntity>().FindAsync(id);
             }
             catch (Exception ex)
             {
@@ -85,26 +85,6 @@ namespace LoginProject.Services.IRepository
             }
         }
 
-        public async Task<string> Delete(object id)
-        {
-            try
-            {
-                var entityToDelete = await GetById(id);
-                if (entityToDelete != null)
-                {
-                    _context.Set<TEntity>().Remove(entityToDelete);
-                    _context.SaveChanges();
-                    return id.ToString();
-                }
-                return "";
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"{nameof(Delete)} function error on {nameof(BaseRepository<TEntity, TContext>)}");
-                throw;
-            }
-        }
-
         public async Task<TEntity> Update(TEntity entityToUpdate)
         {
             try
@@ -116,6 +96,26 @@ namespace LoginProject.Services.IRepository
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"{nameof(Update)} function error on {nameof(BaseRepository<TEntity, TContext>)}");
+                throw;
+            }
+        }
+
+        public string Delete(object id)
+        {
+            try
+            {
+                var entityToDelete = GetById(id).Result;
+                if (entityToDelete != null)
+                {
+                    _context.Set<TEntity>().Remove(entityToDelete);
+                    _context.SaveChanges();
+                    return id.ToString();
+                }
+                return "";
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"{nameof(Delete)} function error on {nameof(BaseRepository<TEntity, TContext>)}");
                 throw;
             }
         }

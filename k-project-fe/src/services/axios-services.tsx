@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-var baseURL = process.env.REACT_APP_IS_DEVELOPMENT ? 'https://localhost:32773/api/' : 'http://site.hqkhang.io.vn/api/'
+const baseURL = process.env.REACT_APP_IS_DEVELOPMENT === "true" ? 'https://localhost:32773/api/' : 'http://auth.hqkhang.io.vn/api/api/'
 // Create an Axios instance with a base URL
 const axiosInstance = axios.create({
     baseURL: baseURL, // Set your base URL here

@@ -10,14 +10,15 @@ namespace LoginProject.Extenstions
         public static void CustomApplicationBuilder(this IApplicationBuilder app)
         {
             // Configure the HTTP request pipeline.
-            if (app.ApplicationServices.GetService<IHostEnvironment>().IsDevelopment())
+            //if (app.ApplicationServices.GetService<IHostEnvironment>().IsDevelopment())
+            //{
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
             {
-                app.UseSwagger();
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "K Site API");
-                });
-            }
+                c.SwaggerEndpoint("swagger/v1/swagger.json", "K Site API");
+            });
+            app.UseDeveloperExceptionPage();
+            //}
 
             app.UseHttpsRedirection();
             app.UseCors("AllowAll");
