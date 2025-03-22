@@ -1,11 +1,7 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Admin from './Admin/Admin';
-import { showToast } from '../utils/toast-function';
-import { jwtDecode } from 'jwt-decode';
-import App from '../App';
-import SuccessPage from './error-pages/success-page';
-import { Navigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { jwtDecode } from "jwt-decode";
+import { useAuth } from "../context/AuthContext";
+import { Navigate } from "react-router-dom";
+
 function AdminPage() {
     const { authToken } = useAuth();
     const checkJwt = (token: any) => {

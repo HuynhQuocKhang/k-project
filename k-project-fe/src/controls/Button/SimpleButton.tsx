@@ -9,7 +9,7 @@ type SimpleButtonProps = {
 }
 const SimpleButton = ({ children, onClick, className }: SimpleButtonProps) => {
   return (
-    <div className={className ? className + ' button-box' : 'button-box'} onClick={onClick}>
+    <div className={className ? className + ' button-box' : 'button-box'} onClick={onClick} onTouchStart={onClick}>
       <span>{children}</span>
     </div>
   );

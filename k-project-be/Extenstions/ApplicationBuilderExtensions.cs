@@ -15,7 +15,7 @@ namespace LoginProject.Extenstions
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("swagger/v1/swagger.json", "K Site API");
+                c.SwaggerEndpoint("v1/swagger.json", "K Site API");
             });
             app.UseDeveloperExceptionPage();
             //}

@@ -1,8 +1,6 @@
 import './Login.scss';
-import LoginImage from '../assets/images/signup-image.jpg';
 import { faCheck, faEnvelope, faKey, faLock, faMailBulk, faUser } from '@fortawesome/free-solid-svg-icons';
-import { useRef, useState } from 'react';
-import { Button } from 'react-bootstrap';
+import { useEffect, useRef, useState } from 'react';
 import Cookies from 'universal-cookie';
 import { jwtDecode } from 'jwt-decode';
 import { showToast } from '../../utils/toast-function';
@@ -16,10 +14,24 @@ const Login = () => {
     let [txtUsername, setTxtUsername] = useState('');
     let [txtPassword, setTxtPassword] = useState('');
     let [txtEmail, setTxtEmail] = useState('');
-
+    const getAllElement = () => {
+        const element = {
+            coverComponent: document.getElementById("cover-component"),
+            welcomeComponent: document.getElementById("welcome-component"),
+            backComponent: document.getElementById("back-component"),
+            welcomeContent: document.getElementById("welcome-content"),
+            backContent: document.getElementById("back-content"),
+            registerContent: document.getElementById("register-content"),
+            loginContent: document.getElementById("login-content"),
+            mobileRegisterContent: document.getElementById("mobile-register-component"),
+            mobileLoginComponent: document.getElementById("mobile-login-component"),
+        }
+        return element;
+    }
     const cookies = new Cookies();
-    window.addEventListener("keyup", (event) => {
-        if (event.key === "Enter") {
+    window.addEventListener("keypress", (event) => {
+        console.log("event", event.key)
+        if (event.key.toLocaleLowerCase() === "enter") {
             handleLogin();
         }
     })
@@ -44,7 +56,7 @@ const Login = () => {
                 password: txtPassword
             };
             var rs = await axiosPOST("Auth/Login", loginRequest);
-            if (rs.success) {
+            if (rs != null && rs?.success) {
                 const token = rs.data;
                 var jwtObj = jwtDecode(token);
                 if (jwtObj != null && jwtObj?.exp != undefined) {
@@ -53,12 +65,16 @@ const Login = () => {
                     var expireTime = time + 1000 * 36000;
                     now.setTime(expireTime);
                     cookies.set("jwt_authentication", token, {
+                        domain: ".hqkhang.io.vn", // 👈 Make token accessible across subdomains
+                        path: "/",
+                        secure: true, // 👈 Required for HTTPS
+                        sameSite: "lax",
                         expires: now
                     })
                 }
                 showToast("success", "Đăng nhập thành công")
                 setTimeout(() => {
-                    window.location.href = (process.env.REACT_APP_IS_DEVELOPMENT ? "http://admin.hqkhang.io.vn" : "http://localhost:3000");
+                    window.location.href = (process.env.REACT_APP_IS_DEVELOPMENT ? "http://localhost:3001" : "http://admin.hqkhang.io.vn");
                 }, 2000)
             }
         } catch (error) {
@@ -74,100 +90,148 @@ const Login = () => {
     }
 
     const changeToRegisterComponent = () => {
-        var coverComponent = document.getElementById("cover-component");
-        var welcomeComponent = document.getElementById("welcome-component");
-        var backComponent = document.getElementById("back-component");
-        var welcomeContent = document.getElementById("welcome-content");
-        var backContent = document.getElementById("back-content");
-        var registerContent = document.getElementById("register-content");
-        var loginContent = document.getElementById("login-content");
-
-        coverComponent?.classList.add("register-slide-from-center")
+        const element = getAllElement();
+        element?.coverComponent?.classList.add("register-slide-from-center");
         setTimeout(() => {
-            welcomeContent?.classList.add("welcome-slide-left")
-        }, 500)
+            element?.welcomeContent?.classList.add("welcome-slide-left");
+        }, 500);
 
         setTimeout(() => {
-            if (backComponent)
-                backComponent.style.display = "flex";
-            backContent?.classList.add("back-slide-from-right")
-            if (welcomeComponent)
-                welcomeComponent.style.display = "none";
-            if (registerContent) {
-                registerContent?.classList.add("register-slide-from-right")
+            if (element?.backComponent)
+                element.backComponent.style.display = "flex";
+            element?.backContent?.classList.add("back-slide-from-right");
+            if (element?.welcomeComponent)
+                element.welcomeComponent.style.display = "none";
+            if (element?.registerContent) {
+                element?.registerContent?.classList.add("register-slide-from-right");
             }
-            if (loginContent) {
-                loginContent?.classList.replace("login-content", "login-content-hide")
+            if (element?.loginContent) {
+                element?.loginContent?.classList.replace("login-content", "login-content-hide");
             }
 
-        }, 1200)
+        }, 1200);
     }
 
 
     const changeToLoginComponent = () => {
-        var coverComponent = document.getElementById("cover-component");
-        var welcomeComponent = document.getElementById("welcome-component");
-        var welcomeContent = document.getElementById("welcome-content");
-        var backContent = document.getElementById("back-content");
-        var loginContent = document.getElementById("login-content");
-        var backComponent = document.getElementById("back-component");
-
-        coverComponent?.classList.replace("register-slide-from-center", "login-slide-from-center")
+        const element = getAllElement();
+        element?.coverComponent?.classList.replace("register-slide-from-center", "login-slide-from-center");
         setTimeout(() => {
-            backContent?.classList.replace("back-slide-from-right", "back-slide-from-left")
-        }, 500)
+            element?.backContent?.classList.replace("back-slide-from-right", "back-slide-from-left");
+        }, 500);
 
         setTimeout(() => {
-            if (backComponent)
-                backComponent.style.display = "none";
+            if (element?.backComponent)
+                element.backComponent.style.display = "none";
 
-            welcomeContent?.classList.replace("welcome-slide-left", "welcome-slide-right")
-            if (welcomeComponent)
-                welcomeComponent.style.display = "flex";
+            element?.welcomeContent?.classList.replace("welcome-slide-left", "welcome-slide-right")
+            if (element?.welcomeComponent)
+                element.welcomeComponent.style.display = "flex";
 
-            if (loginContent) {
-                loginContent?.classList.add("login-slide-from-left")
-                loginContent?.classList.replace("login-content-hide", "login-content")
+            if (element?.loginContent) {
+                element?.loginContent?.classList.add("login-slide-from-left");
+                element?.loginContent?.classList.replace("login-content-hide", "login-content");
             }
-        }, 1300)
+        }, 1300);
         setTimeout(() => {
             clearAdditionalClass();
-        }, 2000)
+        }, 2000);
     }
 
     const clearAdditionalClass = () => {
-        var coverComponent = document.getElementById("cover-component");
-        var welcomeContent = document.getElementById("welcome-content");
-        var backContent = document.getElementById("back-content");
-        var loginContent = document.getElementById("login-content");
-        var backComponent = document.getElementById("back-component");
-        var registerContent = document.getElementById("register-content");
+        const element = getAllElement();
+        if (element?.coverComponent && element?.coverComponent.classList.contains("login-slide-from-center"))
+            element?.coverComponent.classList.remove("login-slide-from-center")
+        if (element?.coverComponent && element?.coverComponent.classList.contains("register-slide-from-center"))
+            element?.coverComponent.classList.remove("register-slide-from-center");
+        if (element?.coverComponent && element?.coverComponent.classList.contains("register-slide-from-bottom-to-top"))
+            element?.coverComponent.classList.remove("register-slide-from-bottom-to-top");
+        if (element?.coverComponent && element?.coverComponent.classList.contains("register-slide-from-top-to-bottom"))
+            element?.coverComponent.classList.remove("register-slide-from-top-to-bottom");
 
-        if (coverComponent && coverComponent.classList.contains("login-slide-from-center"))
-            coverComponent.classList.remove("login-slide-from-center")
-        if (coverComponent && coverComponent.classList.contains("register-slide-from-center"))
-            coverComponent.classList.remove("register-slide-from-center")
+        if (element?.welcomeContent && element?.welcomeContent.classList.contains("welcome-slide-left"))
+            element?.welcomeContent.classList.remove("welcome-slide-left");
+        if (element?.welcomeContent && element?.welcomeContent.classList.contains("welcome-slide-right"))
+            element?.welcomeContent.classList.remove("welcome-slide-right");
 
-        if (welcomeContent && welcomeContent.classList.contains("welcome-slide-left"))
-            welcomeContent.classList.remove("welcome-slide-left")
-        if (welcomeContent && welcomeContent.classList.contains("welcome-slide-right"))
-            welcomeContent.classList.remove("welcome-slide-right")
+        if (element?.backComponent && element?.backComponent.classList.contains("back-slide-from-right"))
+            element?.backComponent.classList.remove("back-slide-from-right");
+        if (element?.backComponent && element?.backComponent.classList.contains("back-slide-from-left"))
+            element?.backComponent.classList.remove("back-slide-from-left");
 
-        if (backComponent && backComponent.classList.contains("back-slide-from-right"))
-            backComponent.classList.remove("back-slide-from-right")
-        if (backComponent && backComponent.classList.contains("back-slide-from-left"))
-            backComponent.classList.remove("back-slide-from-left")
+        if (element?.backContent && element?.backContent.classList.contains("back-slide-from-right"))
+            element?.backContent.classList.remove("back-slide-from-right");
+        if (element?.backContent && element?.backContent.classList.contains("back-slide-from-left"))
+            element?.backContent.classList.remove("back-slide-from-left");
 
-        if (backContent && backContent.classList.contains("back-slide-from-right"))
-            backContent.classList.remove("back-slide-from-right")
-        if (backContent && backContent.classList.contains("back-slide-from-left"))
-            backContent.classList.remove("back-slide-from-left")
+        if (element?.registerContent && element?.registerContent.classList.contains("register-slide-from-right"))
+            element?.registerContent.classList.remove("register-slide-from-right");
+        if (element?.registerContent && element?.registerContent.classList.contains("register-slide-from-bottom-to-center"))
+            element?.registerContent.classList.remove("register-slide-from-bottom-to-center");
 
-        if (registerContent && registerContent.classList.contains("register-slide-from-right"))
-            registerContent.classList.remove("register-slide-from-right")
 
-        if (loginContent && loginContent.classList.contains("login-slide-from-left"))
-            loginContent.classList.remove("login-slide-from-left")
+        if (element?.loginContent && element?.loginContent.classList.contains("login-slide-from-left"))
+            element?.loginContent.classList.remove("login-slide-from-left");
+        if (element?.loginContent && element?.loginContent.classList.contains("login-content-hide"))
+            element?.loginContent.classList.remove("login-content-hide");
+        if (element?.loginContent && element?.loginContent.classList.contains("login-slide-from-top-to-center"))
+            element?.loginContent.classList.remove("login-slide-from-top-to-center");
+        
+        if (element?.mobileLoginComponent && element?.mobileLoginComponent.classList.contains("login-content-hide"))
+            element?.mobileLoginComponent.classList.remove("login-content-hide");
+    }
+
+
+    const changeToRegisterComponentForMobile = () => {
+        const element = getAllElement();
+        element?.coverComponent?.classList.add("register-slide-from-bottom-to-top");
+        setTimeout(() => {
+
+            if (element?.loginContent) {
+                element?.loginContent?.classList.replace("login-content", "login-content-hide");
+            }
+            if (element?.mobileLoginComponent) {
+                element?.mobileLoginComponent?.classList.replace("mobile-login-component", "login-content-hide");
+            }
+
+        }, 700);
+        setTimeout(() => {
+            if (element?.registerContent) {
+                element?.registerContent?.classList.add("register-slide-from-bottom-to-center");
+                element?.registerContent?.classList.replace("register-content-hide","register-content");
+            }
+            if (element?.mobileRegisterContent) {
+                element.mobileRegisterContent.style.display = "flex";
+            }
+        }, 1200);
+
+
+    }
+
+    const changeToLoginComponentForMobile = () => {
+        const element = getAllElement();
+        element?.coverComponent?.classList.replace("register-slide-from-bottom-to-top", "register-slide-from-top-to-bottom");
+        setTimeout(() => {
+            if (element?.registerContent) {
+
+                element?.registerContent?.classList.remove("register-slide-from-bottom-to-center");
+                element?.registerContent?.classList.replace("register-content", "register-content-hide");
+            }
+
+            if (element?.mobileLoginComponent) {
+                element?.mobileLoginComponent?.classList.replace("login-content-hide", "mobile-login-component");
+            }
+
+        }, 700);
+        setTimeout(() => {
+            if (element?.loginContent) {
+                element?.loginContent?.classList.add("login-slide-from-top-to-center");
+                element?.loginContent?.classList.replace("login-content-hide", "login-content");
+            }
+        }, 1200);
+        setTimeout(() => {
+            clearAdditionalClass();
+        }, 2000);
     }
 
     return (
@@ -197,6 +261,7 @@ const Login = () => {
                     <div className='register-content' id="register-content">
                         <div style={{ margin: "auto", padding: "24px 0px" }}>
                             <div className="register-title">Register</div>
+                            <SocialPlatform />
                             <div className='mb-4 mt-4'>
                                 <TextFieldWithIcon value={txtUsername} icon={faUser} placeholder='Username' onChange={(e: any) => setTxtUsername(e)} />
                             </div>
@@ -209,25 +274,30 @@ const Login = () => {
                             <div className='mb-4 mt-4'>
                                 <SimpleButton onClick={() => handleRegister()}>Register</SimpleButton>
                             </div>
-                            <label className="label-text">or register with social platforms</label>
-                            <SocialPlatform />
+                            <div className='mobile-register-component' id="mobile-register-component">
+                                <label className="label-text">Already have an account?</label>
+                                <SimpleButton className="cover-button" onClick={() => changeToLoginComponentForMobile()}>Login</SimpleButton>
+                            </div>
                         </div>
                     </div>
                     <div className='login-content' id="login-content">
                         <div style={{ margin: "auto", padding: "24px 0px" }}>
                             <div className="login-title">Login</div>
+                            <SocialPlatform />
                             <div className='mb-4 mt-4'>
                                 <TextFieldWithIcon value={txtUsername} icon={faUser} placeholder='Username' onChange={(e: any) => setTxtUsername(e)} />
                             </div>
                             <div className='mb-4 mt-4'>
                                 <TextFieldWithIcon type="password" value={txtPassword} icon={faLock} placeholder='Password' onChange={(e: any) => setTxtPassword(e)} />
                             </div>
-                            <a className="forgot-password-text">Forgot Password?</a>
                             <div className='mb-4 mt-4'>
                                 <SimpleButton onClick={() => handleLogin()}>Login</SimpleButton>
                             </div>
-                            <label className="label-text">or login with social platforms</label>
-                            <SocialPlatform />
+                            <a className="forgot-password-text">Forgot Password?</a>
+                            <div className='mobile-login-component' id="mobile-login-component">
+                                <label className="label-text">Don't have an account?</label>
+                                <SimpleButton className="cover-button" onClick={() => changeToRegisterComponentForMobile()}>Register</SimpleButton>
+                            </div>
                         </div>
                     </div>
                 </div>

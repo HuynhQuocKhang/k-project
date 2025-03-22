@@ -15,6 +15,7 @@ Docker command:
 
     - Run Watchtower: docker run -d --name "watchtower-name" --restart always -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower "project-a project-b" --interval "seconds" --cleanup
 	- Ex: docker run -d --name watchtower --restart always -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower "k-project-fe k-project-be" --interval 300 --cleanup
+	- Ex: docker run -d --name watchtower -v /var/run/docker.sock:/var/run/docker.sock -e WATCHTOWER_POLL_INTERVAL=300 -e WATCHTOWER_CLEANUP=true containrrr/watchtower login-fe login-be admin-fe
 
     - Run SQL Image: sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=P0ssibl3#2023" -p 1433:1433 --name k-project-sql --hostname kprojectsql -d mcr.microsoft.com/mssql/server:2019-latest
 	-u: username

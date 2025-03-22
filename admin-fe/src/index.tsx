@@ -1,12 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import './responsive.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { ToastContainer } from 'react-toastify';
-import { AuthProvider } from './context/AuthContext';
-import 'react-toastify/dist/ReactToastify.css'
+import React from "react";
+import { AuthProvider } from "./context/AuthContext";
+import App from "./App";
+import { ToastContainer } from "react-toastify";
+import reportWebVitals from "./reportWebVitals";
+import ReactDOM from "react-dom/client";
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

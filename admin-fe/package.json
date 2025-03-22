@@ -43,13 +43,16 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
     "push-docker": "docker build -t huynhkhang/admin-project-fe . && docker push huynhkhang/admin-project-fe",
+    "start": "set PORT=3001 && react-scripts start",
+    "start:prod": "env-cmd -f .env.production react-scripts start",
+    "build": "react-scripts build",
     "build:dev": "env-cmd -f .env react-scripts start",
-    "build:prod": "env-cmd -f .production.env react-scripts build",
+    "build:prod": "env-cmd -f .env.production react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint --fix .  --ext .js,.jsx,.ts,.tsx"
   },
   "eslintConfig": {
     "extends": [
@@ -72,8 +75,12 @@
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",
     "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "prettier": "^3.5.3",
     "react-router-dom": "^6.27.0",
     "tailwindcss": "^3.4.14"
   }

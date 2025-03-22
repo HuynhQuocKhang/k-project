@@ -15,7 +15,7 @@ const axiosInstance = axios.create({
 export const axiosGET = async (url: string, params = {}) => {
     try {
         const response = await axiosInstance.get(url, { params });
-        return response.data;
+        return  response?.data ?? null;
     } catch (error) {
         console.error('GET request error:', error);
         return null;
@@ -26,7 +26,7 @@ export const axiosGET = async (url: string, params = {}) => {
 export const axiosPOST = async (url: string, data: any) => {
     try {
         const response = await axiosInstance.post(url, data);
-        return response.data;
+        return  response?.data ?? null;
     } catch (error) {
         console.error('POST request error:', error);
         return null;

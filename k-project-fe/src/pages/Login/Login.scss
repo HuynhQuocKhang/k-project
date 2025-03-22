@@ -44,7 +44,6 @@
 
 .login-content-hide {
     display: none;
-    transform: translateX(-100%);
 }
 
 .register-content {
@@ -53,7 +52,6 @@
     text-align: center;
     justify-content: center;
     position: absolute;
-    transform: translateX(100%);
 }
 
 .register-title,
@@ -103,17 +101,14 @@
     // align-items: center;
     height: 100%;
     width: 100%;
-    border-radius: 20px 190px 190px 20px;
     background-color: var(--main-color);
     color: var(--text-color-white) !important;
     padding: 0px !important;
     z-index: 1;
-    transform: translateX(-50%);
 }
 
 .cover-button {
     border: 2px solid var(--white-color);
-    width: 250px !important;
 }
 
 .welcome-content {
@@ -168,16 +163,16 @@
 
 @keyframes registerSlideFromCenter {
     0% {
-        transform: translateX(-50%);
+        transform: translate(-50%, 0%);
     }
 
     50% {
-        transform: translateX(0%);
+        transform: translate(0%, 0%);
         border-radius: 20px;
     }
 
     100% {
-        transform: translateX(50%);
+        transform: translate(50%, 0%);
         border-radius: 190px 20px 20px 190px;
     }
 }
@@ -195,17 +190,17 @@
 
 @keyframes loginSlideFromCenter {
     0% {
-        transform: translateX(50%);
+        transform: translate(50%, 0%);
         border-radius: 190px 20px 20px 190px;
     }
 
     50% {
-        transform: translateX(0%);
+        transform: translate(0%, 0%);
         border-radius: 20px;
     }
 
     100% {
-        transform: translateX(-50%);
+        transform: translate(-50%, 0%);
     }
 
 }
@@ -219,11 +214,11 @@
 
 @keyframes welcomeSlideLeft {
     0% {
-        transform: translateX(0px);
+        transform: translate(0px, 0px);
     }
 
     100% {
-        transform: translateX(-500px);
+        transform: translate(-500px, 0px);
     }
 }
 
@@ -236,11 +231,11 @@
 
 @keyframes welcomeSlideRight {
     0% {
-        transform: translateX(-500px);
+        transform: translate(-500px, 0px);
     }
 
     100% {
-        transform: translateX(0px);
+        transform: translate(0px, 0px);
     }
 }
 
@@ -261,7 +256,7 @@
 
 .back-content {
     display: none;
-    transform: translateX(500px);
+    transform: translate(500px, 0px);
     overflow: hidden;
 }
 
@@ -275,12 +270,12 @@
 
 @keyframes backSlideFromRight {
     0% {
-        transform: translateX(500px);
+        transform: translate(500px, 0px);
 
     }
 
     100% {
-        transform: translateX(0px);
+        transform: translate(0px, 0px);
     }
 }
 
@@ -294,11 +289,11 @@
 
 @keyframes backSlideFromLeft {
     0% {
-        transform: translateX(0px);
+        transform: translate(0px, 0px);
     }
 
     100% {
-        transform: translateX(500px);
+        transform: translate(500px, 0px);
         display: none;
     }
 }
@@ -315,11 +310,11 @@
 
 @keyframes registerSlideFromRight {
     0% {
-        transform: translateX(100%);
+        transform: translate(100%, 0%);
     }
 
     100% {
-        transform: translateX(0%);
+        transform: translate(0%, 0%);
     }
 }
 
@@ -334,10 +329,19 @@
 
 @keyframes loginSlideFromLeft {
     0% {
-        transform: translateX(-100%);
+        transform: translate(-100%, 0%);
     }
 
     100% {
-        transform: translateX(0%);
+        transform: translate(0%, 0%);
     }
+}
+
+
+.mobile-login-component {
+    display: none;
+}
+
+.mobile-register-component {
+    display: none;
 }

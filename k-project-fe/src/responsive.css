@@ -1,21 +1,238 @@
-@media screen and (min-width: 0px) and (max-width: 767px) {
-  .login-image {
+@media screen and (max-width:460px) {
+  .login-container {
+    width: 90% !important;
+    height: 80% !important;
+    margin: 0px;
+  }
+
+  .login-content {
+    width: 100% !important;
+  }
+
+  .register-container {
+    width: 90% !important;
+    height: 80% !important;
+    margin: 0px;
+  }
+
+  .register-content {
+    width: 100% !important;
+  }
+
+  .welcome-title {
+    font-size: 30px !important;
+  }
+
+  .back-title {
+    font-size: 30px !important;
+  }
+
+  .register-title {
+    font-size: 30px !important;
+  }
+
+  .login-title {
+    font-size: 30px !important;
+  }
+
+  .welcome-component,
+  .welcome-title,
+  .welcome-content,
+  .back-component,
+  .back-title,
+  .back-content {
     display: none !important;
   }
 
-  .login-container {
-    width: 55vw !important;
+  .cover-component {
+    position: absolute !important;
+    height: 100% !important;
+    width: 100% !important;
+    border-radius: 190px 190px 20px 20px;
+    background-color: var(--main-color) !important;
+    color: var(--text-color-white) !important;
+    padding: 0px !important;
+    z-index: 1 !important;
   }
+
+  .cover-component {
+    transform: translate(0%, 100%);
+  }
+
+  .mobile-login-component {
+    display: flex !important;
+  }
+
+  .mobile-login-component,
+  .mobile-register-component {
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 16px;
+    height: fit-content;
+    flex-direction: column;
+  }
+
+  .mobile-login-component>.cover-button,
+  .mobile-register-component>.cover-button {
+    background-color: transparent;
+    border: 2px solid var(--main-color);
+  }
+
+  .mobile-login-component>.cover-button:hover,
+  .mobile-register-component>.cover-button:hover {
+    background-color: transparent !important;
+    border: 2px solid var(--main-color) !important;
+  }
+
+  .mobile-login-component>.cover-button span,
+  .mobile-register-component>.cover-button span {
+    color: var(--main-color) !important;
+  }
+
+  .mobile-login-component>.label-text,
+  .mobile-register-component>.label-text {
+    border-top: 2px solid var(--grey-color);
+    text-align: center;
+    padding-top: 18px;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    width: 85%;
+  }
+
+  .register-slide-from-bottom-to-top {
+    width: 100%;
+    padding: 0px;
+    animation-name: registerSlideFromBottomToTop;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+
+
+  }
+
+  @keyframes registerSlideFromBottomToTop {
+    0% {
+      transform: translate(0%, 100%);
+    }
+
+    50% {
+      transform: translate(0%, 0%);
+      border-radius: 20px;
+    }
+
+    100% {
+      transform: translate(0%, -100%);
+      border-radius: 20px 20px 190px 190px;
+    }
+  }
+
+  .login-content-hide {
+    display: none;
+    transform: translate(0%, -100%);
+  }
+
+  .register-content {
+    transform: translate(0%, 100%);
+  }
+
+
+  .register-slide-from-bottom-to-center {
+    display: flex !important;
+    left: 0;
+    animation-name: registerSlideFromBottomToCenter;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes registerSlideFromBottomToCenter {
+    0% {
+      transform: translate(0%, 100%);
+    }
+
+    100% {
+      transform: translate(0%, 0%);
+    }
+  }
+
+
+  .mobile-register-component {
+    display: none;
+  }
+
+  .cover-button {
+    width: 346px !important;
+  }
+
+
+  .register-slide-from-top-to-bottom {
+    width: 100%;
+    padding: 0px;
+    animation-name: registerSlideFromTopToBottom;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes registerSlideFromTopToBottom {
+    0% {
+      transform: translate(0%, -100%);
+      border-radius: 20px 20px 190px 190px;
+    }
+
+    50% {
+      transform: translate(0%, 0%);
+      border-radius: 20px;
+    }
+
+    100% {
+      transform: translate(0%, 100%);
+    }
+  }
+
+  .register-content-hide {
+    display: none;
+    transform: translate(0%, 100%);
+  }
+
+  .login-slide-from-top-to-center{
+    display: flex;
+    right: 0;
+    animation-name: loginSlideFromTopToCenter;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 }
 
-@media screen and (min-width: 768px)  and (max-width: 1050px) {
-  .login-container {
-    width: 75vw !important;
-  }
+@keyframes loginSlideFromTopToCenter {
+    0% {
+        transform: translate(0%,-100%);
+    }
+
+    100% {
+        transform: translate(0%, 0%);
+    }
+}
 }
 
-@media screen and (min-width: 1051px)  and (max-width: 1567px) {
-  .login-container {
-    width: 55vw !important;
+
+
+@media (min-width: 461px) {
+  .cover-component {
+    transform: translate(-50%, 0%);
+    border-radius: 20px 190px 190px 20px;
+  }
+
+  .login-content-hide {
+    display: none;
+    transform: translate(-100%, 0%);
+  }
+
+  .register-content {
+    transform: translate(100%, 0%);
+  }
+
+  .cover-button {
+    width: 250px !important;
   }
 }
